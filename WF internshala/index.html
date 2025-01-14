@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 class="text-3xl font-bold text-center mb-8">Weather Forecast</h1>
+
+        <!-- Search Section -->
+        <div class="mb-6">
+            <div class="flex gap-2">
+                <div class="relative flex-1">
+                    <input 
+                        type="text" 
+                        id="cityInput"
+                        placeholder="Enter city name..." 
+                        class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    >
+                    <div id="recentSearches" class="absolute w-full mt-1 bg-white border rounded-lg shadow-lg z-10 hidden">
+                        <!-- Recent searches will be populated here -->
+                    </div>
+                </div>
+                <button 
+                    id="searchButton"
+                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-400"
+                >
+                    Search
+                </button>
+                <button 
+                    id="locationButton"
+                    class="p-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+                >
+                    📍
+                </button>
+            </div>
+        </div>
+
+        <!-- Error Alert -->
+        <div id="errorAlert" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span id="errorMessage" class="block sm:inline"></span>
+        </div>
+
+        <!-- Current Weather -->
+        <div id="currentWeather" class="hidden bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h2 id="cityName" class="text-2xl font-bold"></h2>
+                    <p id="weatherDescription" class="text-gray-600 capitalize"></p>
+                </div>
+                
+                <div class="flex items-center">
+                    <img id="weatherIcon" class="w-16 h-16" src="" alt="Weather Icon">
+                    <div class="ml-4">
+                        <p id="temperature" class="text-4xl font-bold"></p>
+                        <p id="feelsLike" class="text-gray-600"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mt-6">
+                <div class="flex items-center">
+                    <span class="text-gray-600 mr-2">🌬️</span>
+                    <div>
+                        <p class="text-gray-600">Wind Speed</p>
+                        <p id="windSpeed" class="font-bold"></p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-gray-600 mr-2">💧</span>
+                    <div>
+                        <p class="text-gray-600">Humidity</p>
+                        <p id="humidity" class="font-bold"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extended Forecast -->
+        <div id="extendedForecast" class="hidden bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-bold mb-4">5-Day Forecast</h3>
+            <div id="forecastContainer" class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <!-- Forecast cards will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
